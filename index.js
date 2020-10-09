@@ -1,8 +1,13 @@
 //imports
+require('dotenv').config()
 const fs = require("fs").promises
 var {create} = require("@kit-js/core/js/util");
 const Discord = require('discord.js');
 const ai = require('@kettlelogic/language-model')
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=s1mpl3
 //duck needs to "say"
 
 //procedeures
@@ -20,9 +25,9 @@ const client = new Discord.Client();
 var m = create(ai.Model)();
 
 //event handlers
-
+/// casheing msg, 
 client.on('ready', async() => {
-  console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Logged in as ${client.user.tag}!`);
     const shakespere = await fs.readFile('shakespere.txt','utf8')
     m.train(2,shakespere.split(/\W+/))
 });
@@ -32,6 +37,6 @@ client.on('message', async msg => {
     {
         msg.reply(m.generateRandomPhrase(10))
     }
-    //alter the way the bot m
+    
 });
-client.login('NDQ5Mjc5NTcwNDQ1NzI5Nzkz.WwcGNA.osNqCkyUctqnlaPxuawydBdz87Q');
+client.login(process.env.DISCORD_API_KEY);
