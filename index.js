@@ -5,9 +5,6 @@ var {create} = require("@kit-js/core/js/util");
 const Discord = require('discord.js');
 const ai = require('@kettlelogic/language-model')
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=s1mpl3
 //duck needs to "say"
 
 //procedeures
